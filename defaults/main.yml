@@ -1,0 +1,5 @@
+---
+
+sshd_config: "/etc/ssh/sshd_config"
+disable_root: true
+allow_local_root: false

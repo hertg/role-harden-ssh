@@ -1,0 +1,20 @@
+---
+
+name: Run Linter
+
+'on':
+  workflow_call:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: docker
+    steps:
+
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: Run yamllint
+        uses: https://code.forgejo.org/ansible-actions/yamllint-action@v0.0.2
+        with:
+          target: "./"

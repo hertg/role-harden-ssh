@@ -1,0 +1,19 @@
+---
+argument_specs:
+  main:
+    short_description: harden server ssh configuration
+    options:
+      sshd_config:
+        type: "str"
+        description: >
+          path to the sshd_config file,
+          defaults to /etc/ssh/sshd_config
+        required: true
+      disable_root:
+        type: "bool"
+        description: do not permit root login
+        required: true
+      allow_local_root:
+        type: "str"
+        description: allow root login from local networks
+        required: false
