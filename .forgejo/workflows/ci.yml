@@ -11,6 +11,10 @@ name: CI
 
 jobs:
 
-  lint:
-    name: Run linter
-    uses: ./.forgejo/workflows/run-linter.yml
+  yaml-lint:
+    name: Run YAML Lint
+    uses: ./.forgejo/workflows/run-yaml-lint.yml
+
+  ansible-lint:
+    name: Run Ansible Lint
+    uses: ./.forgejo/workflows/run-ansible-lint.yml

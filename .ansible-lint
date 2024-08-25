@@ -1,0 +1,2 @@
+warn_list:
+    - '701' # for some reason, ansible-lint expects galaxy_info in argument_specs, which doesnt make sense

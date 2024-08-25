@@ -1,13 +1,13 @@
 ---
 
-name: Run Linter
+name: Run YAML Lint
 
 'on':
   workflow_call:
 
 jobs:
-  lint:
-    name: Lint
+  yaml-lint:
+    name: YAML Lint
     runs-on: docker
     steps:
 

@@ -1,38 +1,38 @@
 ---
 
-- name: disable empty password login
-  notify: restart sshd
-  lineinfile:
+- name: Disable empty password login
+  notify: Restart sshd
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config }}"
     regexp: '^#?PermitEmptyPasswords'
     line: 'PermitEmptyPasswords no'
 
-- name: disable remote root login
+- name: Disable remote root login
   when: disable_root
-  notify: restart sshd
-  lineinfile:
+  notify: Restart sshd
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config }}"
     regexp: '^#?PermitRootLogin'
     line: 'PermitRootLogin no'
 
-- name: disable password login
-  notify: restart sshd
-  lineinfile:
+- name: Disable password login
+  notify: Restart sshd
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config }}"
     regexp: '^(#\s*)?PasswordAuthentication '
     line: 'PasswordAuthentication no'
 
-- name: enable PubkeyAuthentication
-  notify: restart sshd
-  lineinfile:
+- name: Enable PubkeyAuthentication
+  notify: Restart sshd
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config }}"
     regexp: '^(#\s*)?PubkeyAuthentication '
     line: 'PubkeyAuthentication yes'
 
-- name: allow root login from local networks
+- name: Allow root login from local networks
   when: disable_root and allow_local_root
-  notify: restart sshd
-  blockinfile:
+  notify: Restart sshd
+  ansible.builtin.blockinfile:
     path: "{{ sshd_config }}"
     block: |
       Match Address 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
@@ -40,9 +40,9 @@
         PasswordAuthentication yes
       Match All
 
-- name: suppress last login message
-  notify: restart sshd
-  lineinfile:
+- name: Suppress last login message
+  notify: Restart sshd
+  ansible.builtin.lineinfile:
     dest: "{{ sshd_config }}"
     regexp: '^(#\s*)?PrintLastLog '
     line: 'PrintLastLog no'

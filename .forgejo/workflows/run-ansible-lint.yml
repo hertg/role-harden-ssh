@@ -1,0 +1,23 @@
+---
+
+name: Run Ansible Lint
+
+'on':
+  workflow_call:
+
+jobs:
+  ansible-lint:
+    name: Ansible Lint
+    runs-on: docker
+    steps:
+
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: Install ansible-lint
+        run: |
+          apt update
+          apt install -y --no-install-recommends ansible-lint
+
+      - name: Run ansible-lint
+        run: ansible-lint .
