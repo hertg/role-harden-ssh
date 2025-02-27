@@ -8,7 +8,6 @@ name: Run YAML Lint
 jobs:
   yaml-lint:
     name: YAML Lint
-    runs-on: docker
     steps:
 
       - name: Checkout

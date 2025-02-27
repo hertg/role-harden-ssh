@@ -14,7 +14,9 @@ jobs:
   yaml-lint:
     name: Run YAML Lint
     uses: ./.forgejo/workflows/run-yaml-lint.yml
+    runs-on: selfhosted
 
   ansible-lint:
     name: Run Ansible Lint
     uses: ./.forgejo/workflows/run-ansible-lint.yml
+    runs-on: selfhosted
